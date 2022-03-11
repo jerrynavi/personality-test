@@ -4,6 +4,8 @@ interface Props {
   question: Question;
   isActive: boolean;
   selectedAnswer?: Answer;
+  totalQuestions: number;
+  questionIndex: number;
   recordResponse: (answer: Answer, questionId: number) => void;
 }
 
@@ -11,6 +13,8 @@ const QuestionRenderer = ({
   question,
   isActive,
   selectedAnswer,
+  totalQuestions,
+  questionIndex,
   recordResponse,
 }: Props) => {
   return (
@@ -21,6 +25,9 @@ const QuestionRenderer = ({
           : 'opacity-0 absolute top-0 left-0 right-0 -z-10'
       }`}
     >
+      <p className="text-center text-2xl mb-8">
+        {questionIndex + 1} / {totalQuestions}
+      </p>
       <h2 className="text-xl md:text-2xl">{question.text}</h2>
       <ol className="mt-4">
         {question.answers.map((answer, index) => (

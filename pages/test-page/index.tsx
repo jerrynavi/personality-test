@@ -17,10 +17,12 @@ export default function TestPage() {
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(-1);
   const [responses, setResponses] = useState<Record<string, Answer>>();
 
+  const isFirstQuestion = activeQuestionIndex === 0;
+  const isLastQuestion =
+    questions && activeQuestionIndex === questions?.length - 1;
+
   const next = () => {
-    const isMaxLength =
-      questions && activeQuestionIndex === questions?.length - 1;
-    if (!isMaxLength) {
+    if (!isLastQuestion) {
       setActiveQuestionIndex((idx) => {
         return idx + 1;
       });
@@ -78,6 +80,8 @@ export default function TestPage() {
           <QuestionRenderer
             key={question.id}
             question={question}
+            totalQuestions={questions.length}
+            questionIndex={index}
             recordResponse={recordResponse}
             {...(responses != null && {
               selectedAnswer: responses[question.id],
@@ -87,13 +91,16 @@ export default function TestPage() {
         ))}
 
         <div className="max-w-3xl mx-auto px-4 mt-8 flex justify-between">
-          <button className="btn" onClick={() => prev()}>
-            Previous Question
-          </button>
-          <button className="btn" onClick={() => next()}>
-            {activeQuestionIndex === questions.length - 1
-              ? 'All done!'
-              : 'Next Question'}
+          {!isFirstQuestion && (
+            <button className="btn" onClick={() => prev()}>
+              Previous Question
+            </button>
+          )}
+          <button
+            className={`btn ${isFirstQuestion && 'flex-1'}`}
+            onClick={() => next()}
+          >
+            {isLastQuestion ? 'All done!' : 'Next Question'}
           </button>
         </div>
       </main>
