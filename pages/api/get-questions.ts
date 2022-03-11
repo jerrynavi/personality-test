@@ -12,7 +12,7 @@ export interface Question {
   answers: Answer[];
 }
 
-const questions: Question[] = [
+export const questions: Question[] = [
   {
     id: 1,
     text: "You're really busy at work and a colleague is telling you their life story and personal woes. You:",
