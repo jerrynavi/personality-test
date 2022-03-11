@@ -1,34 +1,33 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Personality Test - Introvert or Extrovert
 
-## Getting Started
+Please see the project's [brief](./BRIEF.md).
 
-First, run the development server:
+## Rationale
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+### Next.js
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+I wanted a simple way to set up an "API" without having to build a separate application.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### The Questions and Results
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Since I'm no psychology expert, I wanted to work with any set of odd-numbered questions as that would mean the answers would _always_ tilt one way (introvert) or the other (extrovert).
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+For simplicity, I selected the first three (3) questions from this [page](https://www.psychologies.co.uk/self/are-you-an-introvert-or-an-extrovert.html.
 
-## Learn More
+### Code Structure
 
-To learn more about Next.js, take a look at the following resources:
+There is just one component - the question renderer - and you can find it [here](./components/QuestionRenderer.tsx). For the rest of the code, I followed Next.js's [convention](https://nextjs.org/docs/basic-features/pages) for creating pages.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+There are three pages:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+1. [Home](./pages/index.tsx)
+2. [Test page](./pages/test-page/index.tsx)
+3. [Results page](./pages/results-page/index.tsx)
 
-## Deploy on Vercel
+### Tests
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Tests are located in the `__tests__` directory. You can use the `yarn test` command to run the test suite.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Running locally
+
+If you've cloned the project, make sure to install the dependencies by running `yarn` in the project's root folder. Run `yarn dev` to start the application on [localhost:3000](http://localhost:3000) when the dependencies have been installed.
